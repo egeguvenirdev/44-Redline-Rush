@@ -28,6 +28,7 @@ public class PlayButton : UIPanelBase
         {
             upgradePanel.SetActive(true);
             panelElements.SetActive(false);
+            return;
         }
 
         if (!gameStarted)

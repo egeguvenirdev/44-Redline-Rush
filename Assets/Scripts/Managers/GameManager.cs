@@ -27,7 +27,12 @@ public class GameManager : MonoSingelton<GameManager>
 
     public void StartTheLevel()
     {
+        ActionManager.GameStart?.Invoke();
 
+        //playerin hareketi baslayacak level instantiate edildinten sonra calisacagi icin playeri bul 
+        //playeri init et
+
+        //camManager i init et
     }
 
     public void OnLevelSuccess()
