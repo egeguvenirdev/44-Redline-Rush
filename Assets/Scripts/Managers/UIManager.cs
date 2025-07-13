@@ -77,10 +77,9 @@ public class UIManager : ManagerBase
         //upgradebuttonlarini burade bir update et param yetiyor mu????
     }
 
-    #endregion
-
     private void UpdateMoneyLabel()
     {
-        moneyLabel.text = smoothMoneyNumber.ToString(); //buraya bi formatter yazacagiz.
+        moneyLabel.text = Formatter.FormatFloatToReadableString(smoothMoneyNumber);
     }
+    #endregion
 }

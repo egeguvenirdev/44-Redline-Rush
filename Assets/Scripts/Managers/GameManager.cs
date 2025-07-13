@@ -33,6 +33,8 @@ public class GameManager : MonoSingelton<GameManager>
         //playeri init et
 
         //camManager i init et
+
+        Debug.Log("Game is up");
     }
 
     public void OnLevelSuccess()

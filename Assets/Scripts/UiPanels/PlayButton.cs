@@ -12,7 +12,7 @@ public class PlayButton : UIPanelBase
         gameManager = GameManager.Instance;
         gameStarted = false;
 
-        if (upgradePanel != null) panelElements.SetActive(true);
+        if (panelElements != null) panelElements.SetActive(true);
     }
 
     public override void DeInit()
