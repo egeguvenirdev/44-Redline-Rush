@@ -348,6 +348,7 @@ MonoBehaviour:
   managerBase:
   - {fileID: 1532116607}
   - {fileID: 361643616}
+  - {fileID: 1094424908}
 --- !u!1001 &321571311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1124,8 +1125,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1094424907}
+  - component: {fileID: 1094424908}
   m_Layer: 0
-  m_Name: Managers (5)
+  m_Name: Update Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,6 +1148,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 32053514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094424908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094424906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb528673f1c8404abfb577c3a0c1008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107993204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3617799576319003582, guid: 8be4f53ff9745394d8512903a335233b, type: 3}
