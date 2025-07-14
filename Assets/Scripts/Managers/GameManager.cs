@@ -7,6 +7,8 @@ public class GameManager : MonoSingelton<GameManager>
 
     [Header("Managers")]
     [SerializeField] private ManagerBase[] managerBase;
+    [SerializeField] private ManagerBase camManager;
+    private PlayerManager playerManager;
     //manager
 
     private void Start()
@@ -20,19 +22,24 @@ public class GameManager : MonoSingelton<GameManager>
     {
         foreach (var manager in managerBase)
             if (init)
+            {
                 manager?.Init();
-            else 
+            }
+            else
+            {
                 manager?.DeInit();
+                camManager.Init();
+            }
     }
 
     public void StartTheLevel()
     {
         ActionManager.GameStart?.Invoke();
 
-        //playerin hareketi baslayacak level instantiate edildinten sonra calisacagi icin playeri bul 
-        //playeri init et
+        playerManager = FindFirstObjectByType<PlayerManager>();
+        playerManager.Init();
 
-        //camManager i init et
+        camManager.Init();
 
         Debug.Log("Game is up");
     }

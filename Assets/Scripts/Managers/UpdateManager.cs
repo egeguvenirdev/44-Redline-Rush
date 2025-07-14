@@ -3,12 +3,10 @@ using UnityEngine;
 public class UpdateManager : ManagerBase
 {
     private bool canUpdateGame;
-    //playermanager player
 
     public override void Init()
     {
         canUpdateGame = true;
-        //playeri find et
     }
 
     public override void DeInit()
@@ -21,7 +19,7 @@ public class UpdateManager : ManagerBase
         if (!canUpdateGame) return;
 
         ActionManager.Updater?.Invoke(Time.deltaTime);
-        //ActionManager.AiUpdater?.Invoke(player.getchartransform.pos);
+
         //coroutine manager ticxk metodunu cagir
     }
 }
