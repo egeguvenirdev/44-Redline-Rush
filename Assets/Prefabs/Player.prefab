@@ -49,6 +49,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6493995290214462250}
   - component: {fileID: 9020444156219760302}
+  - component: {fileID: 6562028285715339240}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,6 +86,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a66fc7b42660a4190687d6e212489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runnerScript: {fileID: 6562028285715339240}
+  upgradeManager: {fileID: 0}
+  characterTransform: {fileID: 6554003567430649111}
+--- !u!114 &6562028285715339240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792132987667472858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9818ad495f80e84a8149caa76dc3924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 6554003567430649111}
+  localMover: {fileID: 2410989519730895510}
+  clampLocalX: 2
+  runSpeed: 2
+  localTargetSwipeSpeed: 2
+  characterSwipeLerpSpeed: 2
+  characterRotateLerpSpeed: 2
+  canFollow: 1
 --- !u!1 &8699266192889140607
 GameObject:
   m_ObjectHideFlags: 0
