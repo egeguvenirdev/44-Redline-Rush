@@ -2,8 +2,10 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class UIManager : MonoSingelton<UIManager>, ManagerBase
+public class UIManager : ManagerBase
 {
+    public static UIManager Instance => MonoInstance.Get<UIManager>();
+
     [Header("Panels")]
     [SerializeField] private UIPanelBase[] panels;
     //upgradebuttonlarini degisken oalrak ekle
@@ -18,7 +20,15 @@ public class UIManager : MonoSingelton<UIManager>, ManagerBase
     private float smoothMoneyNumber;
     //levelmanager
 
-    public virtual void Init()
+    private void Awake()
+    {
+        if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public override void Init()
     {
         //levelmanageri ata
 
@@ -33,7 +43,7 @@ public class UIManager : MonoSingelton<UIManager>, ManagerBase
         //upgradecard sinifi yazilinca burada init edilmeli
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
         ActionManager.GameStart -= OpenInGameUIs;
         ActionManager.GameEnd -= CloseInGameUIs;

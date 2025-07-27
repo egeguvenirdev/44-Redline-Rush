@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoneyManager : MonoBehaviour, ManagerBase
+public class MoneyManager : ManagerBase
 {
     [Header("Money Settings")]
     [SerializeField] private int addMoney = 0;
@@ -20,23 +20,26 @@ public class MoneyManager : MonoBehaviour, ManagerBase
         {
             float calculatedMoney = value;
 
-            if (value > 0) 
+            if (value > 0)
                 calculatedMoney = value * moneyMultiplier;
 
             PlayerPrefs.SetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, PlayerPrefs.GetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, 0) + calculatedMoney);
             UIManager.Instance.SetMoneyLabel(calculatedMoney, true);
+            //MonoInstance.Get<UIManager>().SetMoneyLabel(calculatedMoney, true);
         }
     }
 
 
-    public virtual void Init()
+    public override void Init()
     {
         ActionManager.UpdateMoney += OnUpdateMoney;
         ActionManager.UpdateMoneyMultiplier += OnUpdateMoneyMultiplier;
         ActionManager.CheckMoneyAmount += OnCheckMoneyAmount;
+
+        if (Money <= 0) Money = addMoney;
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
         ActionManager.UpdateMoney -= OnUpdateMoney;
         ActionManager.UpdateMoneyMultiplier -= OnUpdateMoneyMultiplier;

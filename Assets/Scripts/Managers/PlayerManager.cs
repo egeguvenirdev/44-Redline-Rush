@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour, ManagerBase
+public class PlayerManager : ManagerBase
 {
     [Header("Components")]
     [SerializeField] private RunnerScript runnerScript;
@@ -13,14 +13,14 @@ public class PlayerManager : MonoBehaviour, ManagerBase
         get => characterTransform;
     }
 
-    public virtual void Init()
+    public override void Init()
     {
         upgradeManager = FindFirstObjectByType<UpgradeManager>();
         runnerScript.Init();
         upgradeManager.Init();
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
         runnerScript.DeInit();
         upgradeManager.DeInit();

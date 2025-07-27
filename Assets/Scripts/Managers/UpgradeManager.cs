@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class UpgradeManager : MonoBehaviour, ManagerBase
+public class UpgradeManager : ManagerBase
 {
-    public virtual void Init()
+    public override void Init()
     {
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
     }
 }

@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 314201424}
   - component: {fileID: 314201425}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +423,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff64400cef56fa48b4d0ff7e0a7a2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetPlayerPrefs: 0
+  resetPlayerPrefs: 1
+  managerBase:
+  - {fileID: 361643616}
+  - {fileID: 1094424908}
+  - {fileID: 975660458}
+  - {fileID: 1532116607}
+  - {fileID: 1154834864}
+  - {fileID: 472884304}
+  camManager: {fileID: 1630403759}
 --- !u!1001 &321571311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2166,6 +2174,17 @@ MonoBehaviour:
   upgradePanel: {fileID: 0}
   levelLabel: {fileID: 0}
   moneyLabel: {fileID: 560261314}
+--- !u!114 &1630403759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7233165846934344007, guid: 6ffc673ad4662834487c138ae844a125, type: 3}
+  m_PrefabInstance: {fileID: 1676593993448904047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884f9a5b37081d342a8dd4640c5e0cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819621826
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour, ManagerBase
+public class AudioManager : ManagerBase
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameAudios gameAudios;
 
-    public virtual void Init()
+    public override void Init()
     {
         ActionManager.PlayClip += OnPlayClip;
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
         ActionManager.PlayClip -= OnPlayClip;
     }

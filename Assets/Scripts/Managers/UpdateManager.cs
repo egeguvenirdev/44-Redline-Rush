@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class UpdateManager : MonoBehaviour, ManagerBase
+public class UpdateManager : ManagerBase
 {
     private bool canUpdateGame;
 
-    public virtual void Init()
+    public override void Init()
     {
         canUpdateGame = true;
     }
 
-    public virtual void DeInit()
+    public override void DeInit()
     {
         canUpdateGame = false;
     }
