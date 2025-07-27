@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class UIManager : ManagerBase
+public class UIManager : MonoSingelton<UIManager>, ManagerBase
 {
     [Header("Panels")]
     [SerializeField] private UIPanelBase[] panels;
@@ -18,7 +18,7 @@ public class UIManager : ManagerBase
     private float smoothMoneyNumber;
     //levelmanager
 
-    public override void Init()
+    public virtual void Init()
     {
         //levelmanageri ata
 
@@ -33,7 +33,7 @@ public class UIManager : ManagerBase
         //upgradecard sinifi yazilinca burada init edilmeli
     }
 
-    public override void DeInit()
+    public virtual void DeInit()
     {
         ActionManager.GameStart -= OpenInGameUIs;
         ActionManager.GameEnd -= CloseInGameUIs;

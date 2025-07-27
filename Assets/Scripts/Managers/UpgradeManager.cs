@@ -1,12 +1,18 @@
 using UnityEngine;
 
-public class UpgradeManager : ManagerBase
+public class UpgradeManager : MonoBehaviour, ManagerBase
 {
-    public override void Init()
+    public virtual void Init()
     {
     }
 
-    public override void DeInit()
+    public virtual void DeInit()
     {
     }
+}
+
+public enum UpgradeType
+{
+    MoneyMultiplier,
+    HorsePower
 }

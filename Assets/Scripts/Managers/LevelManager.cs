@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelManager : ManagerBase
+public class LevelManager : MonoBehaviour, ManagerBase
 {
     [Header("Level Props")]
     [SerializeField] private GameObject[] levels;
@@ -15,12 +15,12 @@ public class LevelManager : ManagerBase
         set => PlayerPrefs.SetInt(ConstantVariables.LevelValues.Level, PlayerPrefs.GetInt(ConstantVariables.LevelValues.Level) + value);
     }
 
-    public override void Init()
+    public virtual void Init()
     {
         GenerateCurrentLevel();
     }
 
-    public override void DeInit()
+    public virtual void DeInit()
     {
         if(currentLevel != null) 
             Destroy(currentLevel);

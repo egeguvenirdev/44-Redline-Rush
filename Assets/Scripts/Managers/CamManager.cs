@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CamManager : ManagerBase
+public class CamManager : MonoBehaviour, ManagerBase
 {
     [Header("Components")]
     [SerializeField] private Camera cam;
@@ -12,13 +12,13 @@ public class CamManager : ManagerBase
 
     private Transform player;
 
-    public override void Init()
+    public virtual void Init()
     {
         ActionManager.Updater += OnUpdate;
         player = FindFirstObjectByType<PlayerManager>().GetCharacterTransform;
     }
 
-    public override void DeInit()
+    public virtual void DeInit()
     {
         ActionManager.Updater -= OnUpdate;
     }

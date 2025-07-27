@@ -3,6 +3,11 @@ public static class ConstantVariables
 {
     public static class LevelValues
     {
-        public static string Level = nameof(Level);
+        public const string Level = nameof(Level);
+    }
+
+    public static class TotalMoneyValue
+    {
+        public const string TotalMoney = nameof(TotalMoney);
     }
 }
