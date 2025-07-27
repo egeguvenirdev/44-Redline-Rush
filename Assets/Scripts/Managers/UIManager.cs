@@ -7,7 +7,7 @@ public class UIManager : MonoSingelton<UIManager>, ManagerBase
     [Header("Panels")]
     [SerializeField] private UIPanelBase[] panels;
     //upgradebuttonlarini degisken oalrak ekle
-    [SerializeField] private GameObject[] inGameUIs;
+    [SerializeField] private GameObject inGameUI;
     [SerializeField] private UIPanelBase upgradePanel;
 
     [Header("Level & Money Texts")]
@@ -46,15 +46,12 @@ public class UIManager : MonoSingelton<UIManager>, ManagerBase
 
     private void OpenInGameUIs()
     {
-        foreach (var inGameUi in inGameUIs)
-            inGameUi.SetActive(true);
+        inGameUI.SetActive(true);
     }
 
     private void CloseInGameUIs(bool isPassed)
     {
-        foreach (var inGameUi in inGameUIs)
-            inGameUi.SetActive(false);
-
+        inGameUI.SetActive(false);
         upgradePanel.DeInit();
     }
 
