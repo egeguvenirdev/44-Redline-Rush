@@ -154,6 +154,7 @@ Transform:
   - {fileID: 361643615}
   - {fileID: 1094424907}
   - {fileID: 472884303}
+  - {fileID: 975660457}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180231406
@@ -1000,6 +1001,52 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7976705866106924214, guid: 6ffc673ad4662834487c138ae844a125, type: 3}
   m_PrefabInstance: {fileID: 1676593993448904047}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &975660456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975660457}
+  - component: {fileID: 975660458}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975660457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975660456}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 32053514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975660458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975660456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12372f6524198784c81fc2108f5bd2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1676593993448904048}
+  gameAudios: {fileID: 11400000, guid: 789899528a14b294188ee61a7ce93f81, type: 2}
 --- !u!1 &1052793530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2156,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ffc673ad4662834487c138ae844a125, type: 3}
+--- !u!82 &1676593993448904048 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8079455620073114365, guid: 6ffc673ad4662834487c138ae844a125, type: 3}
+  m_PrefabInstance: {fileID: 1676593993448904047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

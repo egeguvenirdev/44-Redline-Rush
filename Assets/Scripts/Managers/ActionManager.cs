@@ -7,7 +7,7 @@ public static class ActionManager
     public static Action GameStart {get; set;}
     public static Action<bool> GameEnd {get; set;}
     public static Action<float> Updater {get; set;}
-    public static Action<AudioClip> PlayClip {get; set;}
+    public static Action<AudioType> PlayClip {get; set;}
 
     //Player Action
     public static Action<float> SwerveValue {get; set;}
