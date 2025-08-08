@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : ManagerBase
 {
@@ -15,10 +16,13 @@ public class UIManager : ManagerBase
     [Header("Level & Money Texts")]
     [SerializeField] private TextMeshProUGUI levelLabel;
     [SerializeField] private TextMeshProUGUI moneyLabel;
+    [SerializeField] private Image moneyImage;
 
     private Tween smoothMoneyTween;
     private float smoothMoneyNumber;
     //levelmanager
+
+    public Transform GetMoneyImageTrasnsform => moneyImage.transform;
 
     private void Awake()
     {

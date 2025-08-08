@@ -5,6 +5,7 @@ public class MoneyManager : ManagerBase
     [Header("Money Settings")]
     [SerializeField] private int addMoney = 0;
     private float moneyMultiplier = 1;
+    private UIManager uiManager;
 
     public float MoneyMultiplier
     {
@@ -24,7 +25,8 @@ public class MoneyManager : ManagerBase
                 calculatedMoney = value * moneyMultiplier;
 
             PlayerPrefs.SetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, PlayerPrefs.GetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, 0) + calculatedMoney);
-            UIManager.Instance.SetMoneyLabel(calculatedMoney, true);
+            uiManager = UIManager.Instance;
+            uiManager.SetMoneyLabel(calculatedMoney, true);
             //MonoInstance.Get<UIManager>().SetMoneyLabel(calculatedMoney, true);
         }
     }

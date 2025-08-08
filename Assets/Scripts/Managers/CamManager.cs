@@ -15,12 +15,14 @@ public class CamManager : ManagerBase
     public override void Init()
     {
         ActionManager.Updater += OnUpdate;
+        ActionManager.GetOrtographicScreenToWorldPoint += OnGetOrtographicPoint;
         player = FindFirstObjectByType<PlayerManager>().GetCharacterTransform;
     }
 
     public override void DeInit()
     {
         ActionManager.Updater -= OnUpdate;
+        ActionManager.GetOrtographicScreenToWorldPoint -= OnGetOrtographicPoint;
     }
 
     private void OnUpdate(float deltaTime)
@@ -31,6 +33,11 @@ public class CamManager : ManagerBase
             targetPosition.x = Mathf.Clamp(targetPosition.x, -clampLocalX, clampLocalX);
             transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * deltaTime);
         }
+    }
+
+    private Vector3 OnGetOrtographicPoint(Vector3 point)
+    {
+        return cam.ScreenToWorldPoint(point);
     }
 
     //getcam pos for ui animation
