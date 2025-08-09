@@ -21,6 +21,7 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
     [SerializeField] protected Space rotateSpace;
     [SerializeField] protected float speed = 4f;
 
+    protected float elapsedTme;
     protected bool isAnimating;
     protected bool destroyed;
     private Vector3 minHeight;
@@ -31,7 +32,7 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
 
     public PoolType PoolType => throw new System.NotImplementedException();
 
-    public void OnTakenFromPool()
+    private void OnEnable()
     {
         minHeight = transform.position;
         gameObject.SetLayerRecursively("Collectable");
@@ -46,6 +47,10 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
         ActionManager.Updater += OnUpdate;
     }
 
+    public void OnTakenFromPool()
+    {
+    }
+
     private void OnUpdate(float deltaTime)
     {
         if (!isAnimating) return;
@@ -56,7 +61,8 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
 
         if (canElevate)
         {
-            float lerpValue = Mathf.Sin(speed * deltaTime + 1f) / 2f;
+            elapsedTme += deltaTime;
+            float lerpValue = (Mathf.Sin(speed * elapsedTme) + 1f) / 2f;
             transform.position = Vector3.Lerp(minHeight, minHeight + maxHeight, lerpValue);
         }
     }
@@ -69,7 +75,7 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
         if (target)
         {
             Vector3 targetPos = target.position;
-            transform.DOJump(targetPos, 1f, 1, .5f).OnUpdate(() =>
+            transform.DOJump(targetPos, 1.5f, 1, .4f).OnUpdate(() =>
             {
                 targetPos = target.position;
             }).OnComplete(() =>
@@ -84,9 +90,11 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
 
             });
         }
-
-        ActionManager.GamePlayUpgrade?.Invoke(upgradeType, upgradeValue);
-        Destroy(gameObject);
+        else
+        {
+            ActionManager.GamePlayUpgrade?.Invoke(upgradeType, upgradeValue);
+            Destroy(gameObject);
+        }
     }
 
     private void MoveToMoneyArea()

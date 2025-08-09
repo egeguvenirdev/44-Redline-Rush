@@ -2220,6 +2220,7 @@ MonoBehaviour:
   upgradePanel: {fileID: 0}
   levelLabel: {fileID: 0}
   moneyLabel: {fileID: 560261314}
+  moneyImage: {fileID: 0}
 --- !u!114 &1630403759 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7233165846934344007, guid: 6ffc673ad4662834487c138ae844a125, type: 3}
