@@ -10,4 +10,9 @@ public static class ConstantVariables
     {
         public const string TotalMoney = nameof(TotalMoney);
     }
+
+    public static class UpgradeTexts
+    {
+        public const string Lv = nameof(Lv);
+    }
 }

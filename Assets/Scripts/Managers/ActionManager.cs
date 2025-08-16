@@ -24,6 +24,7 @@ public static class ActionManager
 
     //Upgrade
     public static Action<UpgradeType, float> GamePlayUpgrade { get; set; }
+    public static Action OnUpgradePurchased { get; set; }
 
     //Visual Effects
     public static Func<Vector3, Vector3> GetOrtographicScreenToWorldPoint { get; set; }
