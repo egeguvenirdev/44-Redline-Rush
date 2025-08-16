@@ -9,9 +9,8 @@ public class UIManager : ManagerBase
 
     [Header("Panels")]
     [SerializeField] private UIPanelBase[] panels;
-    //upgradebuttonlarini degisken oalrak ekle
-    [SerializeField] private GameObject inGameUI;
     [SerializeField] private UIPanelBase upgradePanel;
+    [SerializeField] private GameObject inGameUI;
 
     [Header("Level & Money Texts")]
     [SerializeField] private TextMeshProUGUI levelLabel;
@@ -20,7 +19,6 @@ public class UIManager : ManagerBase
 
     private Tween smoothMoneyTween;
     private float smoothMoneyNumber;
-    //levelmanager
 
     public Transform GetMoneyImageTrasnsform => moneyImage.transform;
 
@@ -34,33 +32,25 @@ public class UIManager : ManagerBase
 
     public override void Init()
     {
-        //levelmanageri ata
-
-        ActionManager.GameStart += OpenInGameUIs;
         ActionManager.GameEnd += CloseInGameUIs;
 
-        //level texti guncelle
+        int level = ActionManager.GameLevel.Invoke();
+        levelLabel.text = "Level " + level;
 
         foreach (var p in panels)
             p.Init();
 
-        //upgradecard sinifi yazilinca burada init edilmeli
+        upgradePanel.Init();
     }
 
     public override void DeInit()
     {
-        ActionManager.GameStart -= OpenInGameUIs;
         ActionManager.GameEnd -= CloseInGameUIs;
 
         foreach (var p in panels)
             p.DeInit();
 
-        //upgradecard sinifi yazilinca burada deinit edilmeli
-    }
-
-    private void OpenInGameUIs()
-    {
-        inGameUI.SetActive(true);
+        upgradePanel.DeInit();
     }
 
     private void CloseInGameUIs(bool isPassed)
@@ -84,8 +74,6 @@ public class UIManager : ManagerBase
             smoothMoneyNumber = totalMoney;
             UpdateMoneyLabel();
         }
-
-        //upgradebuttonlarini burade bir update et param yetiyor mu????
     }
 
     private void UpdateMoneyLabel()

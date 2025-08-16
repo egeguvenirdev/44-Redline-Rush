@@ -4,6 +4,7 @@ public class PlayButton : UIPanelBase
 {
     [SerializeField] private GameObject panelElements;
     [SerializeField] private GameObject upgradePanel;
+    [SerializeField] private GameObject inGameUIs;
     private GameManager gameManager;
     private bool gameStarted;
 
@@ -17,17 +18,18 @@ public class PlayButton : UIPanelBase
 
     public override void DeInit()
     {
-        panelElements.SetActive(false); 
+        panelElements.SetActive(false);
     }
 
     public override void OnButtonClick()
     {
         base.OnButtonClick();
 
-        if(upgradePanel != null)
+        if (upgradePanel != null && inGameUIs != null)
         {
             upgradePanel.SetActive(true);
             panelElements.SetActive(false);
+            inGameUIs.SetActive(true);
             return;
         }
 
@@ -38,7 +40,7 @@ public class PlayButton : UIPanelBase
             gameStarted = true;
             return;
         }
-         
+
         panelElements.SetActive(false);
     }
 }

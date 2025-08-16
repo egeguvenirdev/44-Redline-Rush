@@ -77,7 +77,7 @@ public class UpgradeManager : ManagerBase
         if (!defs.TryGetValue(type, out var def)) return false;
 
         float price = GetUpgradePrice(type);
-        if (!ActionManager.CheckMoneyAmount(price)) return false;
+        if (!ActionManager.CheckMoneyAmount.Invoke(price)) return false;
 
         ActionManager.UpdateMoney?.Invoke(-price);
         ActionManager.OnUpgradePurchased?.Invoke();

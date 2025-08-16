@@ -70,7 +70,7 @@ public class UpgradeCard : ButtonBase
         int lvl = upgradeManager.GetUpgradeLevel(upgradeDefinition.upgradeType);
         float price = upgradeManager.GetUpgradePrice(upgradeDefinition.upgradeType);
 
-        if (levelText) levelText.text = lvl + ConstantVariables.UpgradeTexts.Lv;
+        if (levelText) levelText.text = ConstantVariables.UpgradeTexts.Lv + " " + lvl;
         if (priceText) priceText.text = Formatter.FormatFloatToReadableString(price);
     }
 

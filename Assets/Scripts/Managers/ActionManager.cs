@@ -7,6 +7,7 @@ public static class ActionManager
     public static Action GameStart { get; set; }
     public static Action<bool> GameEnd { get; set; }
     public static Action<float> Updater { get; set; }
+    public static Func<int> GameLevel { get; set; }
     public static Action<AudioType> PlayClip { get; set; }
 
     //Player Action
@@ -19,7 +20,7 @@ public static class ActionManager
     //Money Actions
     public static Action<float> UpdateMoney { get; set; }
     public static Action<float> UpdateMoneyMultiplier { get; set; }
-    public static Predicate<float> CheckMoneyAmount { get; set; }
+    public static Func<float, bool> CheckMoneyAmount { get; set; }
 
 
     //Upgrade

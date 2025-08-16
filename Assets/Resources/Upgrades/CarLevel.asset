@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 3
   cardName: Car Level
-  startPrice: 100
-  incrementalBasePrice: 10
+  startPrice: 5000
+  incrementalBasePrice: 1000
   upgradeBaseValue: 1
   upgradeBaseIncrementalValue: 1

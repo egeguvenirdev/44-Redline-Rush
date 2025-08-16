@@ -18,6 +18,7 @@ public class LevelManager : ManagerBase
     public override void Init()
     {
         GenerateCurrentLevel();
+        ActionManager.GameLevel += GetCurrentLevelIndex;
     }
 
     public override void DeInit()
@@ -52,5 +53,10 @@ public class LevelManager : ManagerBase
         LevelIndex = levelUpValue;
 
         Init();
+    }
+
+    private int GetCurrentLevelIndex()
+    {
+        return LevelIndex;
     }
 }

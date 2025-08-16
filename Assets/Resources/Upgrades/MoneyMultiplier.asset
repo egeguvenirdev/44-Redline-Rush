@@ -17,4 +17,4 @@ MonoBehaviour:
   startPrice: 100
   incrementalBasePrice: 10
   upgradeBaseValue: 1
-  upgradeBaseIncrementalValue: 1
+  upgradeBaseIncrementalValue: 0.1
