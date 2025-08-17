@@ -61,17 +61,18 @@ public class UIManager : ManagerBase
 
     #region Money
 
-    public void SetMoneyLabel(float totalMoney, bool isAnimated)
+    public void SetMoneyLabel(float currentMoney, float targetMoney, bool isAnimated)
     {
+        smoothMoneyNumber = currentMoney;
         if (isAnimated)
         {
             smoothMoneyTween.Kill();
-            smoothMoneyTween = DOTween.To(() => smoothMoneyNumber, x => smoothMoneyNumber = x, totalMoney, 0.5f).SetSpeedBased(false).OnUpdate(() => UpdateMoneyLabel());
+            smoothMoneyTween = DOTween.To(() => smoothMoneyNumber, x => smoothMoneyNumber = x, targetMoney, 0.5f).SetSpeedBased(false).OnUpdate(() => UpdateMoneyLabel());
         }
         else
         {
             smoothMoneyTween.Kill();
-            smoothMoneyNumber = totalMoney;
+            smoothMoneyNumber = targetMoney;
             UpdateMoneyLabel();
         }
     }

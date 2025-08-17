@@ -18,6 +18,7 @@ public class UpgradeCard : ButtonBase
     [SerializeField] private TextMeshProUGUI priceText;
 
     private UpgradeManager upgradeManager;
+    private Vector3 startScale = Vector3.one * 2.4f;
 
     public override void Init()
     {
@@ -26,6 +27,7 @@ public class UpgradeCard : ButtonBase
         upgradeManager = UpgradeManager.Instance;
         ActionManager.GameStart += OnGameStart;
         ActionManager.OnUpgradePurchased += RefreshAll;
+        startScale = transform.localScale;
 
         RefreshAll();
     }
@@ -50,8 +52,8 @@ public class UpgradeCard : ButtonBase
         {
 
             transform.DOKill();
-            transform.DOScale(Vector3.one, 0);
-            transform.DOPunchScale(Vector3.one * 0.3f, .5f, 6).SetUpdate(true);
+            transform.DOScale(startScale, 0);
+            transform.DOPunchScale(startScale * 0.3f, .5f, 6).SetUpdate(true);
             return;
         }
 
@@ -76,7 +78,7 @@ public class UpgradeCard : ButtonBase
 
     private void SetInterractablesAndColors()
     {
-        bool canBuy = upgradeManager.TryPurchase(upgradeDefinition.upgradeType);
+        bool canBuy = ActionManager.CheckMoneyAmount.Invoke(upgradeManager.GetUpgradePrice(upgradeDefinition.upgradeType)); //upgradeManager.TryPurchase(upgradeDefinition.upgradeType);
         if (button) button.interactable = canBuy;
         if (priceText) priceText.color = canBuy ? whiteColor : redColor;
     }

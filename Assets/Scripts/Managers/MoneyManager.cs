@@ -24,10 +24,10 @@ public class MoneyManager : ManagerBase
             if (value > 0)
                 calculatedMoney = value * moneyMultiplier;
 
+            float currentMoney = Money;
             PlayerPrefs.SetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, PlayerPrefs.GetFloat(ConstantVariables.TotalMoneyValue.TotalMoney, 0) + calculatedMoney);
             uiManager = UIManager.Instance;
-            uiManager.SetMoneyLabel(calculatedMoney, true);
-            //MonoInstance.Get<UIManager>().SetMoneyLabel(calculatedMoney, true);
+            uiManager.SetMoneyLabel(currentMoney, Money, true);
         }
     }
 

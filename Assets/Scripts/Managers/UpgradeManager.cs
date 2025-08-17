@@ -67,8 +67,8 @@ public class UpgradeManager : ManagerBase
         Init();
         if (!defs.TryGetValue(upgradeType, out var def)) return fallback;
 
-        float incPrice = GetIncrementalPrice(upgradeType, def.incrementalBasePrice);
-        return def.startPrice + incPrice;
+        int level = GetLevel(upgradeType);
+        return def.startPrice + def.incrementalBasePrice * (level - 1) * (level - 1);
     }
 
     public bool TryPurchase(UpgradeType type)
@@ -79,12 +79,8 @@ public class UpgradeManager : ManagerBase
         float price = GetUpgradePrice(type);
         if (!ActionManager.CheckMoneyAmount.Invoke(price)) return false;
 
-        ActionManager.UpdateMoney?.Invoke(-price);
-        ActionManager.OnUpgradePurchased?.Invoke();
-
-
         int level = GetLevel(type);
-        float incPrice = GetIncrementalPrice(type, def.incrementalBasePrice);
+        float incPrice = GetIncrementalPrice(type, 0);
 
         level += 1;
         incPrice += def.incrementalBasePrice;
@@ -92,6 +88,9 @@ public class UpgradeManager : ManagerBase
         PlayerPrefs.SetInt(Key(type, "lvl"), level);
         PlayerPrefs.SetFloat(Key(type, "incp"), incPrice);
         PlayerPrefs.Save();
+
+        ActionManager.UpdateMoney?.Invoke(-price);
+        ActionManager.OnUpgradePurchased?.Invoke();
 
         ActionManager.GamePlayUpgrade?.Invoke(type, GetUpgradeValue(type));
         return true;
