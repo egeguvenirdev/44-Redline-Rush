@@ -63,6 +63,15 @@ public class UpgradeCard : ButtonBase
 
     private void RefreshAll()
     {
+        if(upgradeDefinition.hasMaxLimit)
+        {
+            int level = upgradeManager.GetUpgradeLevel(upgradeDefinition.upgradeType);
+            if(level >= upgradeDefinition.maxLevel)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
         SetTexts();
         SetInterractablesAndColors();
     }

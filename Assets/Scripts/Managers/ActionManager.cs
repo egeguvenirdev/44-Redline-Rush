@@ -25,6 +25,9 @@ public static class ActionManager
 
     //Upgrade
     public static Action<UpgradeType, float> GamePlayUpgrade { get; set; }
+    public static Action<UpgradeType, float> AddTempUpgrade { get; set; }
+    public static Action<UpgradeType> ClearTempUpgrade { get; set; }
+    public static Action ClearAllTempUpgrades { get; set; }
     public static Action OnUpgradePurchased { get; set; }
 
     //Visual Effects

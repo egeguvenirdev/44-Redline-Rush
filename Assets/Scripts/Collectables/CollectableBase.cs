@@ -85,14 +85,14 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
                     MoveToMoneyArea();
                     return;
                 }
-                ActionManager.GamePlayUpgrade?.Invoke(upgradeType, upgradeValue);
+                ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
                 Destroy(gameObject);
 
             });
         }
         else
         {
-            ActionManager.GamePlayUpgrade?.Invoke(upgradeType, upgradeValue);
+            ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
             Destroy(gameObject);
         }
     }
@@ -115,7 +115,7 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
             .SetEase(Ease.Linear)
             .OnComplete(() =>
             {
-                ActionManager.GamePlayUpgrade?.Invoke(upgradeType, upgradeValue);
+                ActionManager.UpdateMoney?.Invoke(upgradeValue);
                 //image a dopunch ekle
                 Destroy(gameObject);
             });

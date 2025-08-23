@@ -18,3 +18,5 @@ MonoBehaviour:
   incrementalBasePrice: 1000
   upgradeBaseValue: 1
   upgradeBaseIncrementalValue: 1
+  hasMaxLimit: 1
+  maxLevel: 8

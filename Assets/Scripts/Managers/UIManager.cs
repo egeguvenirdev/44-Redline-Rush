@@ -35,7 +35,7 @@ public class UIManager : ManagerBase
         ActionManager.GameEnd += CloseInGameUIs;
 
         int level = ActionManager.GameLevel.Invoke();
-        levelLabel.text = "Level " + level;
+        levelLabel.text = "Level " + (level + 1);
 
         foreach (var p in panels)
             p.Init();

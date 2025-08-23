@@ -15,4 +15,8 @@ public class UpgradeDefinition : ScriptableObject
     [Header("UpgradeValues")]
     public float upgradeBaseValue = 1f;
     public float upgradeBaseIncrementalValue = 1f;
+
+    [Header("UpgradeLimits")]
+    public bool hasMaxLimit;
+    public int maxLevel = 8;
 }

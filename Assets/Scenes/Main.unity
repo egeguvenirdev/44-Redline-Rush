@@ -306,6 +306,7 @@ MonoBehaviour:
   panelElements: {fileID: 1107993204}
   upgradePanel: {fileID: 1045158191}
   inGameUIs: {fileID: 623290935}
+  levelLabel: {fileID: 1752728809}
 --- !u!1 &257322907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4741cdea946494e43969c8b29e9e182c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addMoney: 100000
+  addMoney: 1000000
 --- !u!1 &1298721552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,6 +2517,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 884f9a5b37081d342a8dd4640c5e0cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1752728809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5546338630005732642, guid: 8be4f53ff9745394d8512903a335233b, type: 3}
+  m_PrefabInstance: {fileID: 1049402292002356843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1802527341 stripped

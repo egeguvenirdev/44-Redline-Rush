@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayButton : UIPanelBase
@@ -5,6 +6,7 @@ public class PlayButton : UIPanelBase
     [SerializeField] private GameObject panelElements;
     [SerializeField] private GameObject upgradePanel;
     [SerializeField] private GameObject inGameUIs;
+    [SerializeField] private TextMeshProUGUI levelLabel;
     private GameManager gameManager;
     private bool gameStarted;
 
@@ -14,6 +16,9 @@ public class PlayButton : UIPanelBase
         gameStarted = false;
 
         if (panelElements != null) panelElements.SetActive(true);
+
+        int level = ActionManager.GameLevel.Invoke();
+        levelLabel.text = "Level " + (level + 1);
     }
 
     public override void DeInit()
