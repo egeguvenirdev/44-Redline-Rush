@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +13,14 @@ public class PlayerManager : ManagerBase
 
     [SerializeField] private float baseHorsePower = 10f;
     [SerializeField] private float baseBoost = 1f;
-    [SerializeField] private int baseCarLevel = 1;
+    [SerializeField] private int baseCarLevel = 0;
+
+    [Header("Car Switch Anim")]
+    [SerializeField] private Transform carHolder;
+    [SerializeField] private ParticleSystem switchParticle;
+    [SerializeField] private float switchShrinkScale = 0.3f;
+    [SerializeField] private float switchShrinkDuration = 0.1f;
+    [SerializeField] private float switchGrownDuration = 0.15f;
 
     public float CurrentHorsePower { get; set; }
     public float CurrentBaseBoost { get; set; }
@@ -25,6 +34,8 @@ public class PlayerManager : ManagerBase
     private readonly Dictionary<UpgradeType, float> permUpgradeMultipliers = new();
     //Temp Upgrades
     private readonly Dictionary<UpgradeType, float> tempMultipliers = new();
+
+    private int prevCarIndex = -1;
 
     private void OnEnable()
     {
@@ -165,17 +176,28 @@ public class PlayerManager : ManagerBase
 
     private void RefreshActiveCar()
     {
-        if (carPrefabs == null || carPrefabs.Length == 0) return;
+        int index = Mathf.Clamp(CurrentCarLevel - 1, 0, carPrefabs.Length - 1);
 
-        int index = Mathf.Clamp(CurrentCarLevel - 1, 0 , carPrefabs.Length -1);
+        if (prevCarIndex == index)        
+            return;
 
-        for (int i = 0; i < carPrefabs.Length; i++) 
+        prevCarIndex = index;
+        carHolder.DOKill();
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(carHolder.DOScale(Vector3.one * switchShrinkScale, switchShrinkDuration).SetEase(Ease.InSine)).AppendCallback(() =>
         {
-            if(carPrefabs[i] != null && carPrefabs[i].activeSelf)
-                carPrefabs[i].SetActive(false);
-        }
+            switchParticle.Play();
 
-        var selected = carPrefabs[index];
-        if(selected != null) selected.SetActive(true);
+            for (int i = 0; i < carPrefabs.Length; i++)
+            {
+                if (carPrefabs[i] != null && carPrefabs[i].activeSelf)
+                    carPrefabs[i].SetActive(false);
+            }
+
+            var selected = carPrefabs[index];
+            if (selected != null) selected.SetActive(true);
+
+        }).Append(carHolder.DOScale(Vector3.one, switchGrownDuration).SetEase(Ease.OutBack));
     }
 }
