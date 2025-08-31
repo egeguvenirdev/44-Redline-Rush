@@ -7,11 +7,10 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
     [SerializeField] protected AudioType audioType;
     [SerializeField] protected UpgradeType upgradeType;
     [SerializeField] protected PoolType poolType;
+    [SerializeField] protected Collider col;
 
     [Header("Upgrade Settings")]
     [SerializeField] protected float upgradeValue;
-    //[SerializeField] protected float 
-
 
     [Header("Animation Settings")]
     [SerializeField] protected bool canRotate = true;
@@ -37,9 +36,8 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
         minHeight = transform.position;
         gameObject.SetLayerRecursively("Collectable");
 
-        if (uiManager) uiManager = UIManager.Instance;
-        if (cam) cam = Camera.main;
-        if (imageTransform) imageTransform = uiManager.GetMoneyImageTrasnsform;
+        if (!uiManager) uiManager = UIManager.Instance;
+        if (!imageTransform) imageTransform = uiManager.GetMoneyImageTrasnsform;
 
         isAnimating = true;
         destroyed = false;
@@ -67,40 +65,43 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
         }
     }
 
-
-    public void Collect(Transform target = null, bool uiAnimated = false)
+    public void Collect(Transform target = null)
     {
         isAnimating = false;
+        if (col) col.enabled = false;
 
-        if (target)
+        if (upgradeType == UpgradeType.Money)
         {
-            Vector3 targetPos = target.position;
-            transform.DOJump(targetPos, 1.5f, 1, .4f).OnUpdate(() =>
-            {
-                targetPos = target.position;
-            }).OnComplete(() =>
-            {
-                if (uiAnimated)
-                {
-                    MoveToMoneyArea();
-                    return;
-                }
-                ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
-                Destroy(gameObject);
-
-            });
+            MoveToMoneyArea();
         }
         else
         {
-            ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
-            Destroy(gameObject);
+            if (target)
+            {
+                Vector3 targetPos = target.position;
+                transform.DOJump(targetPos, 1.5f, 1, .4f).OnUpdate(() =>
+                {
+                    targetPos = target.position;
+                }).OnComplete(() =>
+                {
+                    ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
+                    Destroy(gameObject);
+
+                });
+            }
+            else
+            {
+                ActionManager.AddTempUpgrade?.Invoke(upgradeType, upgradeValue);
+                Destroy(gameObject);
+            }
         }
     }
 
     private void MoveToMoneyArea()
     {
-        Vector3 firstPos = cam.WorldToScreenPoint(transform.position);
-        Vector3 secondPos = ActionManager.GetOrtographicScreenToWorldPoint(firstPos);
+        Camera cam = ActionManager.GetOrtoCam?.Invoke();
+        Vector3 firstPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 secondPos = cam.ScreenToWorldPoint(firstPos);
         secondPos.z = imageTransform.position.z;
         transform.position = secondPos;
 
@@ -111,16 +112,17 @@ public class CollectableBase : MonoBehaviour, IPoolable, ICollectable
         path[1] = imageTransform.position + Vector3.down * 4 + Vector3.left * 1.5f;
         path[2] = imageTransform.position;
 
-        transform.DOPath(path, 1f, PathType.CatmullRom)
-            .SetEase(Ease.Linear)
+        transform.DOPath(path, 0.6f, PathType.CatmullRom)
+            .SetEase(Ease.InSine)
             .OnComplete(() =>
             {
                 ActionManager.UpdateMoney?.Invoke(upgradeValue);
-                //image a dopunch ekle
+                imageTransform.DOKill();
+                imageTransform.DOPunchScale(Vector3.one * 0.3f, 0.3f, 3);
                 Destroy(gameObject);
             });
 
-        transform.DOScale(Vector3.one / 3, .3f)
+        transform.DOScale(Vector3.one / 1.3f, .3f)
             .SetDelay(0.3f)
             .SetEase(Ease.Linear);
     }

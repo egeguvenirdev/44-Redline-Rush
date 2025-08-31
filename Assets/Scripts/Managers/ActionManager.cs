@@ -16,6 +16,7 @@ public static class ActionManager
     //public static Func<float> GetUpgradeValue {get; set;}
 
     //Cam Actions
+    public static Func<Camera> GetOrtoCam { get; set; }
 
     //Money Actions
     public static Action<float> UpdateMoney { get; set; }

@@ -17,6 +17,7 @@ public class CamManager : ManagerBase
         ActionManager.Updater += OnUpdate;
         ActionManager.GetOrtographicScreenToWorldPoint += OnGetOrtographicPoint;
         player = FindFirstObjectByType<PlayerManager>().GetCharacterTransform;
+        ActionManager.GetOrtoCam = () => cam;
     }
 
     public override void DeInit()

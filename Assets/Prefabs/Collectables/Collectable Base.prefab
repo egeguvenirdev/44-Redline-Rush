@@ -80,6 +80,7 @@ MonoBehaviour:
   audioType: 0
   upgradeType: 0
   poolType: 0
+  col: {fileID: 5031324177581617581}
   upgradeValue: 1
   canRotate: 1
   canElevate: 1

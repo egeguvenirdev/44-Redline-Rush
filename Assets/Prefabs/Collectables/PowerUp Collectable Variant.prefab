@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2397569011666950125, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+      propertyPath: upgradeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6858025117313299286, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
       propertyPath: m_Name
       value: PowerUp Collectable Variant

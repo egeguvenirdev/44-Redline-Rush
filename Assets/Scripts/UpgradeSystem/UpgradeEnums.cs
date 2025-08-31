@@ -3,5 +3,6 @@ public enum UpgradeType
     MoneyMultiplier,
     CarHorsePower,
     CarBoost,
-    CarLevel
+    CarLevel,
+    Money
 }

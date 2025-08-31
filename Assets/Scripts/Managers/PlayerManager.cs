@@ -133,7 +133,18 @@ public class PlayerManager : ManagerBase
         RefreshActiveCar();
     }
 
-    private float Effective(float baseValue, UpgradeType upgradeType) => baseValue * GetPermMul(upgradeType) * GetTempMul(upgradeType);
+    private float Effective(float baseValue, UpgradeType upgradeType)
+    {
+        if(upgradeType == UpgradeType.CarLevel)
+        {
+            float perm =  GetPermMul(upgradeType);
+            float temp = tempMultipliers.TryGetValue(upgradeType, out var add) ? add :0f;
+
+            return perm + temp;
+        }
+
+        return baseValue * GetPermMul(upgradeType) *GetTempMul(upgradeType); 
+    }
 
     public float GetEffective(UpgradeType upgradeType)
     {

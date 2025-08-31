@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2397569011666950125, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+      propertyPath: col
+      value: 
+      objectReference: {fileID: 3428133425280665427}
+    - target: {fileID: 2397569011666950125, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+      propertyPath: upgradeType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397569011666950125, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+      propertyPath: upgradeValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6858025117313299286, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
       propertyPath: m_Name
       value: Coin Collectable Variant
@@ -60,6 +72,11 @@ PrefabInstance:
       addedObject: {fileID: 4744800846432401081}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+--- !u!65 &3428133425280665427 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5031324177581617581, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
+  m_PrefabInstance: {fileID: 7656672976051992318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3996603066986601264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6716906439854550478, guid: c827b52690586ce44bccdb41fd34963f, type: 3}
