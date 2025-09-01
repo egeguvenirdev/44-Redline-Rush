@@ -6,6 +6,7 @@ public static class ActionManager
     //Game Actions
     public static Action GameStart { get; set; }
     public static Action<bool> GameEnd { get; set; }
+    public static Action MiniGame { get; set; }
     public static Action<float> Updater { get; set; }
     public static Func<int> GameLevel { get; set; }
     public static Action<AudioType> PlayClip { get; set; }
